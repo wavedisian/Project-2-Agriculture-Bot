@@ -14,6 +14,7 @@ public class Runner
 		Scanner in = new Scanner (System.in);
 		String statement = in.nextLine();
 		
+		
 
 
 		while (!statement.equals("Bye"))
@@ -21,6 +22,6 @@ public class Runner
 			System.out.println (chatbot1.getResponse(statement));
 			statement = in.nextLine();
 		}
-		System.out.println("Goodbye my brother")
+		System.out.println("Goodbye my brother");
 	}
 }

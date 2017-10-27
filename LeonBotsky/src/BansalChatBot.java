@@ -8,7 +8,7 @@ public class BansalChatBot {
 		 */	
 		public String getGreeting()
 		{
-			return "Hi, what are your ?";
+			return "Hi, what are your thoughts about Communism?";
 		}
 		
 		/**
@@ -24,29 +24,24 @@ public class BansalChatBot {
 			
 			if (statement.length() == 0)
 			{
-				response = "Would you like to talk about our great leader Karl Marx?";
+				response = "I will not repeat myself!";
 			}
 
-			else if (findKeyword(statement, "no") >= 0)
+			else if (findKeyword(statement, "sucks") >= 0 || findKeyword(statement, "it's bad") >= 0 || findKeyword(statement, "bad") >= 0);
 			{
-				response = "";
-	                	emotion--;
+				response = "How come?";
 			}
 			
-			else if (findKeyword(statement, "levin") >= 0)
+			else if (findKeyword(statement, "best") >= 0 || findKeyword(statement, "sexy") >= 0 || findKeyword(statement, "Karl Marx is the best!") >= 0)
 			{
-				response = "More like LevinTheDream amiright?";
+				response = "I couldn't agree more!";
 				emotion++;
 			}
 
 			// Response transforming I want to statement
-			else if (findKeyword(statement, "I want to", 0) >= 0)
+			else if (findKeyword(statement, "I love", 0) >= 0)
 			{
-				response = transformIWantToStatement(statement);
-			}
-			else if (findKeyword(statement, "I want",0) >= 0)
-			{
-				response = transformIWantStatement(statement);
+				response = transformILoveStatement(statement);
 			}	
 			else
 			{
@@ -62,7 +57,7 @@ public class BansalChatBot {
 		 * @param statement the user statement, assumed to contain "I want to"
 		 * @return the transformed statement
 		 */
-		private String transformIWantToStatement(String statement)
+		private String transformILoveStatement(String statement)
 		{
 			//  Remove the final period, if there is one
 			statement = statement.trim();
@@ -85,7 +80,7 @@ public class BansalChatBot {
 		 * @param statement the user statement, assumed to contain "I want"
 		 * @return the transformed statement
 		 */
-		private String transformIWantStatement(String statement)
+		private String transformILoveStatement(String statement)
 		{
 			//  Remove the final period, if there is one
 			statement = statement.trim();
@@ -96,9 +91,9 @@ public class BansalChatBot {
 				statement = statement.substring(0, statement
 						.length() - 1);
 			}
-			int psn = findKeyword (statement, "I want", 0);
+			int psn = findKeyword (statement, "I love", 0);
 			String restOfStatement = statement.substring(psn + 6).trim();
-			return "Would you really be happy if you had " + restOfStatement + "?";
+			return "Why do you love " + restOfStatement + "?";
 		}
 		
 		
@@ -230,11 +225,15 @@ public class BansalChatBot {
 		private String [] randomNeutralResponses = {"Interesting, tell me more",
 				"Hmmm.",
 				"Do you really think so?",
-				"You don't say.",
-				"It's all boolean to me.",
-				"So, would you like to go for a walk?",
-				"Could you say that again?"
+				"What does the USSR stand for?",
+				"It's all a fantasy.",
+				"Would you like some sickles and hammers??",
+				"Which country of the USSR was your favorite? Mine was Albania."
 		};
-		private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-		private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+		private String [] randomAngryResponses = {"You're mean!", 
+				"Why do you hate communism so much!", 
+				"The rage consumes me!"};
+		private String [] randomHappyResponses = {"I hope Communism works in the end", 
+				"Life is going to be great!", 
+				"You make me feel like Karl Marx is in front of me!"};
 }
