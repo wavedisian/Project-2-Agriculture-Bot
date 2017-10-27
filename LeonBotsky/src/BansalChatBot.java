@@ -8,7 +8,7 @@ public class BansalChatBot {
 		 */	
 		public String getGreeting()
 		{
-			return "Hi, what is up?";
+			return "Hi, what are your ?";
 		}
 		
 		/**
@@ -24,12 +24,12 @@ public class BansalChatBot {
 			
 			if (statement.length() == 0)
 			{
-				response = "Say something, please.";
+				response = "Would you like to talk about our great leader Karl Marx?";
 			}
 
 			else if (findKeyword(statement, "no") >= 0)
 			{
-				response = "Why so negative?";
+				response = "";
 	                	emotion--;
 			}
 			
