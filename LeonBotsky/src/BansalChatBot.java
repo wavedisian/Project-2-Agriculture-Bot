@@ -27,12 +27,12 @@ public class BansalChatBot {
 				response = "I will not repeat myself!";
 			}
 
-			else if (findKeyword(statement, "sucks") >= 0 || findKeyword(statement, "it's bad") >= 0 || findKeyword(statement, "bad") >= 0);
+			else if ((findKeyword(statement, "sucks") >= 0) || (findKeyword(statement, "it's bad")) >= 0 || (findKeyword(statement, "bad") >= 0));
 			{
 				response = "How come?";
 			}
 			
-			else if (findKeyword(statement, "best") >= 0 || findKeyword(statement, "sexy") >= 0 || findKeyword(statement, "Karl Marx is the best!") >= 0)
+			else if ((findKeyword(statement, "best")) >= 0 || (findKeyword(statement, "sexy")) >= 0 || (findKeyword(statement, "Karl Marx is the best!") >= 0));
 			{
 				response = "I couldn't agree more!";
 				emotion++;
@@ -42,6 +42,10 @@ public class BansalChatBot {
 			else if (findKeyword(statement, "I love", 0) >= 0)
 			{
 				response = transformILoveStatement(statement);
+			}	
+			else if (findKeyword(statement, "I love to", 0) >= 0)
+			{
+				response = transformILoveToStatement(statement);
 			}	
 			else
 			{
@@ -68,9 +72,9 @@ public class BansalChatBot {
 				statement = statement.substring(0, statement
 						.length() - 1);
 			}
-			int psn = findKeyword (statement, "I want to", 0);
+			int psn = findKeyword (statement, "I love", 0);
 			String restOfStatement = statement.substring(psn + 9).trim();
-			return "Why do you want to " + restOfStatement + "?";
+			return "Why do you love " + restOfStatement + "?";
 		}
 
 		
@@ -80,7 +84,7 @@ public class BansalChatBot {
 		 * @param statement the user statement, assumed to contain "I want"
 		 * @return the transformed statement
 		 */
-		private String transformILoveStatement(String statement)
+		private String transformILoveToStatement(String statement)
 		{
 			//  Remove the final period, if there is one
 			statement = statement.trim();
@@ -91,40 +95,11 @@ public class BansalChatBot {
 				statement = statement.substring(0, statement
 						.length() - 1);
 			}
-			int psn = findKeyword (statement, "I love", 0);
+			int psn = findKeyword (statement, "I love to", 0);
 			String restOfStatement = statement.substring(psn + 6).trim();
-			return "Why do you love " + restOfStatement + "?";
+			return "Would you like to " + restOfStatement + " with me?";
 		}
-		
-		
-		/**
-		 * Take a statement with "I <something> you" and transform it into 
-		 * "Why do you <something> me?"
-		 * @param statement the user statement, assumed to contain "I" followed by "you"
-		 * @return the transformed statement
-		 */
-		private String transformIYouStatement(String statement)
-		{
-			//  Remove the final period, if there is one
-			statement = statement.trim();
-			String lastChar = statement.substring(statement
-					.length() - 1);
-			if (lastChar.equals("."))
-			{
-				statement = statement.substring(0, statement
-						.length() - 1);
-			}
-			
-			int psnOfI = findKeyword (statement, "I", 0);
-			int psnOfYou = findKeyword (statement, "you", psnOfI);
-			
-			String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-			return "Why do you " + restOfStatement + " me?";
-		}
-		
-
-		
-		
+	
 		/**
 		 * Search for one word in phrase. The search is not case
 		 * sensitive. This method will check that the given goal
@@ -202,8 +177,6 @@ public class BansalChatBot {
 			return findKeyword (statement, goal, 0);
 		}
 		
-
-
 		/**
 		 * Pick a default response to use if nothing else fits.
 		 * @return a non-committal string
