@@ -21,5 +21,6 @@ public class Runner
 			System.out.println (chatbot1.getResponse(statement));
 			statement = in.nextLine();
 		}
+		System.out.println("Goodbye my brother")
 	}
 }
