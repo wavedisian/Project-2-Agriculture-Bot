@@ -6,7 +6,9 @@ public class Runner
 	 */
 	public static void main(String[] args)
 	{
-		ChatBotBansal chatbot1 = new ChatBotBansal();
+		BansalChatBot chatbot1 = new BansalChatBot();
+		AvedisianChatBot chatbot2 = new AvedisianChatBot();
+		DiPietroChatBot chatbot3 = new DiPietroChatBot();
 		
 		System.out.println (chatbot1.getGreeting());
 		Scanner in = new Scanner (System.in);
