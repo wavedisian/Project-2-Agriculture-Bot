@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class DiPietroChatBot {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.

@@ -1,3 +1,5 @@
+import java.util.Random;
+
 //Saurabh Bansal
 public class BansalChatBot {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
@@ -27,19 +29,19 @@ public class BansalChatBot {
 				response = "I will not repeat myself!";
 			}
 
-			else if ((findKeyword(statement, "sucks") >= 0) || (findKeyword(statement, "it's bad")) >= 0 || (findKeyword(statement, "bad") >= 0));
+			if ((findKeyword(statement, "sucks") >= 0) || (findKeyword(statement, "it's bad")) >= 0 || (findKeyword(statement, "bad") >= 0));
 			{
 				response = "How come?";
 			}
 			
-			else if ((findKeyword(statement, "best")) >= 0 || (findKeyword(statement, "sexy")) >= 0 || (findKeyword(statement, "Karl Marx is the best!") >= 0));
+			if ((findKeyword(statement, "best")) >= 0 || (findKeyword(statement, "sexy")) >= 0 || (findKeyword(statement, "Karl Marx is the best!") >= 0));
 			{
 				response = "I couldn't agree more!";
 				emotion++;
 			}
 
 			// Response transforming I want to statement
-			else if (findKeyword(statement, "I love", 0) >= 0)
+			if (findKeyword(statement, "I love", 0) >= 0)
 			{
 				response = transformILoveStatement(statement);
 			}	
