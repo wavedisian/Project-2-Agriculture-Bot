@@ -9,7 +9,7 @@ public class AvedisianChatBot {
 		 */	
 		public String getGreeting()
 		{
-			return "Hi, what is up?";
+			return "Hi, how are you my comrade?";
 		}
 		
 		/**
@@ -25,18 +25,23 @@ public class AvedisianChatBot {
 			
 			if (statement.length() == 0)
 			{
-				response = "Say something, please.";
+				response = "You musn't be shy brother.";
 			}
 
 			else if (findKeyword(statement, "no") >= 0)
 			{
-				response = "Why so negative?";
+				response = "I don't know what I did to deserve that response.";
 	                	emotion--;
 			}
 			
-			else if (findKeyword(statement, "levin") >= 0)
+			else if (findKeyword(statement, "Stalin") >= 0)
 			{
-				response = "More like LevinTheDream amiright?";
+				response = "Stalin? He is my hero.";
+				emotion++;
+			}
+			else if (findKeyword(statement, "Marx") >= 0)
+			{
+				response = "Marx the magnificent, am I right?.";
 				emotion++;
 			}
 
