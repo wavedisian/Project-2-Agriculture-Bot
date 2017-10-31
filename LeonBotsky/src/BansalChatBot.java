@@ -1,25 +1,16 @@
-import java.util.Random;
-
 //Saurabh Bansal
+import java.util.Random;
 public class BansalChatBot {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
+	
+		//Emotion can alter the way our bot responds. Depends on your response to Communism.
 		int emotion = 0;
-		/**
-		 * Get a default greeting 	
-		 * @return a greeting
-		 */	
+		
+		// Get a default greeting 	
 		public String getGreeting()
 		{
 			return "Hi, what are your thoughts about Communism?";
 		}
 		
-		/**
-		 * Gives a response to a user statement
-		 * 
-		 * @param statement
-		 *            the user statement
-		 * @return a response based on the rules given
-		 */
 		public String getResponse(String statement)
 		{
 			String response = "";
@@ -45,7 +36,7 @@ public class BansalChatBot {
 			{
 				response = transformILoveStatement(statement);
 			}	
-			else if (findKeyword(statement, "I love to", 0) >= 0)
+			if (findKeyword(statement, "I love to", 0) >= 0)
 			{
 				response = transformILoveToStatement(statement);
 			}	
@@ -57,15 +48,10 @@ public class BansalChatBot {
 			return response;
 		}
 		
-		/**
-		 * Take a statement with "I want to <something>." and transform it into 
-		 * "Why do you want to <something>?"
-		 * @param statement the user statement, assumed to contain "I want to"
-		 * @return the transformed statement
-		 */
+		//Take an I want statement and the bot would try understanding why one likes __. Emotion can alter it's response.
 		private String transformILoveStatement(String statement)
 		{
-			//  Remove the final period, if there is one
+			//Remove the period.
 			statement = statement.trim();
 			String lastChar = statement.substring(statement
 					.length() - 1);
@@ -79,13 +65,7 @@ public class BansalChatBot {
 			return "Why do you love " + restOfStatement + "?";
 		}
 
-		
-		/**
-		 * Take a statement with "I want <something>." and transform it into 
-		 * "Would you really be happy if you had <something>?"
-		 * @param statement the user statement, assumed to contain "I want"
-		 * @return the transformed statement
-		 */
+	//Understand why one likes something and if the bot can join in. Emotion can alter.
 		private String transformILoveToStatement(String statement)
 		{
 			//  Remove the final period, if there is one
@@ -102,22 +82,7 @@ public class BansalChatBot {
 			return "Would you like to " + restOfStatement + " with me?";
 		}
 	
-		/**
-		 * Search for one word in phrase. The search is not case
-		 * sensitive. This method will check that the given goal
-		 * is not a substring of a longer string (so, for
-		 * example, "I know" does not contain "no").
-		 *
-		 * @param statement
-		 *            the string to search
-		 * @param goal
-		 *            the string to search for
-		 * @param startPos
-		 *            the character of the string to begin the
-		 *            search at
-		 * @return the index of the first occurrence of goal in
-		 *         statement or -1 if it's not found
-		 */
+	
 		private int findKeyword(String statement, String goal,
 				int startPos)
 		{
@@ -128,12 +93,10 @@ public class BansalChatBot {
 			// the line below
 			int psn = phrase.indexOf(goal, startPos);
 
-			// Refinement--make sure the goal isn't part of a
-			// word
+			//Making sure the goal isn't part of the word.
 			while (psn >= 0)
 			{
-				// Find the string of length 1 before and after
-				// the word
+				// Find the string of length 1 before and after the word
 				String before = " ", after = " ";
 				if (psn > 0)
 				{
@@ -146,8 +109,7 @@ public class BansalChatBot {
 							psn + goal.length() + 1);
 				}
 
-				// If before and after aren't letters, we've
-				// found the word
+				// If before and after aren't letters, we've found the word
 				if (((before.compareTo("a") < 0) || (before
 						.compareTo("z") > 0)) // before is not a
 												// letter
@@ -157,8 +119,7 @@ public class BansalChatBot {
 					return psn;
 				}
 
-				// The last position didn't work, so let's find
-				// the next, if there is one.
+				// The last position didn't work, so let's find the next, if there is one.
 				psn = phrase.indexOf(goal, psn + 1);
 
 			}
@@ -166,23 +127,11 @@ public class BansalChatBot {
 			return -1;
 		}
 		
-		/**
-		 * Search for one word in phrase.  The search is not case sensitive.
-		 * This method will check that the given goal is not a substring of a longer string
-		 * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.  
-		 * @param statement the string to search
-		 * @param goal the string to search for
-		 * @return the index of the first occurrence of goal in statement or -1 if it's not found
-		 */
 		private int findKeyword(String statement, String goal)
 		{
 			return findKeyword (statement, goal, 0);
 		}
-		
-		/**
-		 * Pick a default response to use if nothing else fits.
-		 * @return a non-committal string
-		 */
+	
 		private String getRandomResponse ()
 		{
 			Random r = new Random ();
