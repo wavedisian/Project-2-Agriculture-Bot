@@ -7,7 +7,8 @@ public class BansalChatBot
 	// Get a default greeting
 	public String getGreeting()
 	{
-	return "Hi, what are your thoughts about Communism?";
+	return "So I hear you're neutral about Communism. "
+			+ "Would you like Information about Mother Russia or would you like to talk about Communism?";
 	}
 	public String getResponse(String statement)
 	{
@@ -15,65 +16,100 @@ public class BansalChatBot
 		if (statement.length() == 0)
 		{
 			response =  ("I will not repeat myself!");
-			emotion --;
+			emotion = 1;
 		}
-		else if ((findKeyword(statement, "sucks") >= 0) || (findKeyword(statement, "it's bad")) >= 0 
-				|| (findKeyword(statement, "bad") >= 0))
+		else if ((findKeyword(statement, "talk")) >= 0 && ((findKeyword(statement, "Communism")) >= 0))
 		{
-			emotion --;
-		response = "How come?";
-		}
-		else if ((findKeyword(statement, "hate") >= 0))
-		{
-			emotion --;
-		response = "Why?";
-		}
-		else if ((findKeyword(statement, "best")) >= 0 || (findKeyword(statement, "sexy")) >= 0 
-				|| (findKeyword(statement, "Karl Marx is the best!") >= 0))
-		{
-		response = "I couldn't agree more!";
-		emotion++;
-		}
+			System.out.print ("What are your thoughts about Communism?");
+			
+			
+			// 
+			
+			
+				if ((findKeyword(statement, "sucks") >= 0) || (findKeyword(statement, "it's bad")) >= 0 
+						|| (findKeyword(statement, "bad") >= 0))
+				{
+					emotion = 1;
+				response = "How come?";
+				}
+					else if ((findKeyword(statement, "hate") >= 0))
+					{
+						emotion = -1 ;
+					response = "Why?";
+					}
+				else if ((findKeyword(statement, "best")) >= 0 || (findKeyword(statement, "sexy")) >= 0 
+						|| (findKeyword(statement, "Karl Marx is the best!") >= 0))
+				{
+				response = "I couldn't agree more!";
+				emotion = 1;
+				}
+					else if (findKeyword(statement, "I love to", 0) >= 0)
+					{
+					response = transformILoveToStatement(statement);
+					}
+				else if (findKeyword(statement, "I love", 0) >= 0)
+				{
+				response = transformILoveStatement(statement);
+				}
+					else
+					{
+					response = getRandomResponse();
+				}
+				return (response);
+			}
 		// Information codes
-		else if ((findKeyword(statement, "Who was Karl Marx?")) >= 0)
+		else if ((findKeyword(statement, "Information")) >= 0 && ((findKeyword(statement, "about Communism")) >= 0))
 		{
-		response = "Go to http://www.history.com/topics/karl-marx and you can read all about him!";
-		emotion++;
+			System.out.print("What would you like to know?");
+			
+			
+			// Add the Loop
+			
+			
+			if ((findKeyword(statement, "Karl Marx")) >= 0)
+			{
+			response = "Go to http://www.history.com/topics/karl-marx and you can read all about him!";
+			emotion = 1;
+			}
+				else if ((findKeyword(statement, "Soviet Union")) >= 0)
+				{
+				response = 	"Go to http://www.history.com/topics/history-of-the-soviet-union "
+						+ "and you can read all about it!";
+				emotion = 1;
+				}
+			else if ((findKeyword(statement, "Russian Revolution")) >= 0 || 
+					(findKeyword(statement, "How did Communism come to be so big during the Cold War")) >= 0)
+			{
+			response = "Go to http://www.csun.edu/~kaddison/kraus.htm "
+					+ "and you can read all about it! It's a simple site with alot of information.";
+			emotion = 1;
+			}
+				else if ((findKeyword(statement, "Russia")) >= 0 && (findKeyword(statement, "Russia")) >= 0)
+				{
+				response = "Go to http://www.csun.edu/~kaddison/kraus.htm "
+						+ "and you can read all about it! It's a simple site with alot of information.";
+				emotion = 1;
+				}
 		}
-		else if ((findKeyword(statement, "What was the Soviet Union?")) >= 0)
-		{
-		response = "Go to http://www.history.com/topics/history-of-the-soviet-union "
-				+ "and you can read all about it!";
-		emotion++;
-		}
-		else if ((findKeyword(statement, "What was the Russian Revolution?")) >= 0 || 
-				(findKeyword(statement, "How did Communism come to be so big during the Cold War")) >= 0)
-		{
-		response = "Go to http://www.csun.edu/~kaddison/kraus.htm "
-				+ "and you can read all about it! It's a simple site with alot of information.";
-		emotion++;
-		}
-		//else if ((findKeyword(statement, "What was the Russian Revolution?")) >= 0)
-		//{
-		//response = "Go to http://www.csun.edu/~kaddison/kraus.htm "
-			//	+ "and you can read all about it! It's a simple site with alot of information.";
-		//emotion++;
-		//}
-		// Response transforming I want to statement
-		else if (findKeyword(statement, "I love to", 0) >= 0)
+		// Response transforming I love to statement
+		if (findKeyword(statement, "I love to", 0) >= 0)
 		{
 		response = transformILoveToStatement(statement);
 		}
-		else if (findKeyword(statement, "I love", 0) >= 0)
-		{
-		response = transformILoveStatement(statement);
-		}
+			else if (findKeyword(statement, "I love", 0) >= 0)
+			{
+			response = transformILoveStatement(statement);
+			}
 		else
 		{
 		response = getRandomResponse();
 		}
 		return (response);
 	}
+// Write method about Scnaner and Loop
+	
+	
+	
 //Take an I want statement and the bot would try understanding why one likes __. Emotion can alter it's response.
 	private String transformILoveStatement(String statement)
 			{
@@ -111,16 +147,16 @@ public class BansalChatBot
 					goal = goal.toLowerCase();
 					// The only change to incorporate the startPos is in
 					// the line below
-					int psn = phrase.indexOf(goal, startPos);
-					//Making sure the goal isn't part of the word.
+						int psn = phrase.indexOf(goal, startPos);
+						//Making sure the goal isn't part of the word.
 					while (psn >= 0)
 					{
 					// Find the string of length 1 before and after the word
 					String before = " ", after = " ";
-					if (psn > 0)
-					{
-					before = phrase.substring(psn - 1, psn);
-					}
+						if (psn > 0)
+						{
+						before = phrase.substring(psn - 1, psn);
+						}
 					if (psn + goal.length() < phrase.length())
 					{
 					after = phrase.substring(
@@ -128,13 +164,13 @@ public class BansalChatBot
 					psn + goal.length() + 1);
 					}
 					// If before and after aren't letters, we've found the word
-					if (((before.compareTo("a") < 0) || (before
-					.compareTo("z") > 0)) // before is not a
-					// letter
-					&& ((after.compareTo("a") < 0) || (after
-					.compareTo("z") > 0)))
+						if (((before.compareTo("a") < 0) || (before
+						.compareTo("z") > 0)) // before is not a
+						// letter
+						&& ((after.compareTo("a") < 0) || (after
+						.compareTo("z") > 0)))
 					{
-					return psn;
+							return psn;
 					}
 					// The last position didn't work, so let's find the next, if there is one.
 					psn = phrase.indexOf(goal, psn + 1);
@@ -148,31 +184,32 @@ public class BansalChatBot
 							private String getRandomResponse ()
 							{
 							Random r = new Random ();
-							if (emotion == 0)
-							{
-							return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-							}
-							if (emotion < 0)
-							{
-							return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-							}
-							return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
-							}
-								private String [] randomNeutralResponses = {"Interesting, tell me more",
-								"Hmmm.",
-								"Do you really think so?",
-								"What does the USSR stand for?",
-								"It's all a fantasy.",
-								"Would you like some sickles and hammers??",
-								"Which country of the USSR was your favorite? Mine was Albania."
-								};
-								private String [] randomAngryResponses = 
+								if (emotion == 0)
 								{
-										"You're mean!",
-										"Why do you hate communism so much!",
-										"The rage consumes me!"
-								};
-								private String [] randomHappyResponses = {"I hope Communism works in the end",
-								"Life is going to be great!",
-								"You make me feel like Karl Marx is in front of me!"};
+							return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
+								}
+									if (emotion < 0)
+									{
+									return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
+									}
+										return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
+										}
+											private String [] randomNeutralResponses = {"Interesting, tell me more",
+											"Hmmm.",
+											"Do you really think so?",
+											"What does the USSR stand for?",
+											"It's all a fantasy.",
+											"Would you like some sickles and hammers??",
+											"Which country of the USSR was your favorite? Mine was Albania."
+											};
+											private String [] randomAngryResponses = 
+											{
+													"You're mean!",
+													"Why do you hate communism so much!",
+													"The rage consumes me!"
+											};
+											private String [] randomHappyResponses = {"I hope Communism works in the end",
+											"Life is going to be great!",
+											"You make me feel like Karl Marx is in front of me!"};
+
 }
