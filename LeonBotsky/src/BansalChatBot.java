@@ -23,13 +23,42 @@ public class BansalChatBot
 			emotion --;
 		response = "How come?";
 		}
-		
+		else if ((findKeyword(statement, "hate") >= 0))
+		{
+			emotion --;
+		response = "Why?";
+		}
 		else if ((findKeyword(statement, "best")) >= 0 || (findKeyword(statement, "sexy")) >= 0 
 				|| (findKeyword(statement, "Karl Marx is the best!") >= 0))
 		{
 		response = "I couldn't agree more!";
 		emotion++;
 		}
+		// Information codes
+		else if ((findKeyword(statement, "Who was Karl Marx?")) >= 0)
+		{
+		response = "Go to http://www.history.com/topics/karl-marx and you can read all about him!";
+		emotion++;
+		}
+		else if ((findKeyword(statement, "What was the Soviet Union?")) >= 0)
+		{
+		response = "Go to http://www.history.com/topics/history-of-the-soviet-union "
+				+ "and you can read all about it!";
+		emotion++;
+		}
+		else if ((findKeyword(statement, "What was the Russian Revolution?")) >= 0 || 
+				(findKeyword(statement, "How did Communism come to be so big during the Cold War")) >= 0)
+		{
+		response = "Go to http://www.csun.edu/~kaddison/kraus.htm "
+				+ "and you can read all about it! It's a simple site with alot of information.";
+		emotion++;
+		}
+		//else if ((findKeyword(statement, "What was the Russian Revolution?")) >= 0)
+		//{
+		//response = "Go to http://www.csun.edu/~kaddison/kraus.htm "
+			//	+ "and you can read all about it! It's a simple site with alot of information.";
+		//emotion++;
+		//}
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I love to", 0) >= 0)
 		{
