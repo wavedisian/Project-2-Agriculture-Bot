@@ -1,4 +1,4 @@
-//Saurabh Bansal
+ //Saurabh Bansal
 import java.util.Random;
 
 public class CommunismTalk 
