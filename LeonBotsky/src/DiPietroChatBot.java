@@ -242,20 +242,24 @@ public class DiPietroChatBot {
 		}
 		
 		private String [] randomNeutralResponses = {
-				"cool",
-				"Hmmm.",
-				"Do you really think so?",
-				"You don't say.",
-				"It's all boolean to me.",
-				"So, would you like to go for a walk?",
-				"Could you say that again?"
+				"I know, right?",
+				"Interesting.",
+				"I never thought about that.",
+				"I love talking to you.",
+				"Oh...",
+				"I'm shook.",
+				"You're so knowledgable."
 		};
 		private String [] randomAngryResponses = {
-				"Bahumbug.", "Harumph", "The rage consumes me!"
+				"What???", 
+				"Ew...", 
+				"Sounds capitalist...",
+				"You're really Putin me down."
 				};
 		private String [] randomHappyResponses = {
 				"Radical!", 
 				"Sharing is caring, you know.", 
+				"#winning",
 				"Я люблю коммунизм!"
 				};
 }
