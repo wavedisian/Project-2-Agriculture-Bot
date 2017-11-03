@@ -19,6 +19,7 @@ public class DiPietroChatBot {
 		 *            the user statement
 		 * @return a response based on the rules given
 		 */
+		
 		public String getResponse(String statement)
 		{
 			String response = "";

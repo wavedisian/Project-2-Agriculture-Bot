@@ -11,18 +11,51 @@ public class Runner
 		AvedisianChatBot chatbot2 = new AvedisianChatBot();
 		DiPietroChatBot chatbot3 = new DiPietroChatBot();
 		
-		System.out.println (chatbot1.getGreeting());
+		IsCommunist checker = new IsCommunist();
+		
+		System.out.println ("Hi! I'm Leon Botsky. Do you like communism by any chance?");
 		Scanner in = new Scanner (System.in);
 		String statement = in.nextLine();
 		
+		//Uses the person's opinion on communism to refer them to the respective bot
 		
-
-
-		while (!statement.equals("Bye"))
-		{
-			System.out.println (chatbot1.getResponse(statement));
+		if (checker.isCommunist(statement) == -1) {
+			
+			System.out.println (chatbot2.getGreeting());
 			statement = in.nextLine();
+			
+			while (!statement.equals("Bye"))
+			{
+				System.out.println (chatbot2.getResponse(statement));
+				statement = in.nextLine();
+			}
 		}
+		
+		else if (checker.isCommunist(statement) == 1) {
+			
+			System.out.println (chatbot3.getGreeting());
+			statement = in.nextLine();
+			
+			while (!statement.equals("Bye"))
+			{
+				System.out.println (chatbot3.getResponse(statement));
+				statement = in.nextLine();
+			}
+		}
+		
+		else {
+			
+			System.out.println (chatbot1.getGreeting());
+			statement = in.nextLine();
+			
+			while (!statement.equals("Bye"))
+			{
+				System.out.println (chatbot1.getResponse(statement));
+				statement = in.nextLine();
+			}
+		}
+
+		
 		System.out.println("Goodbye my brother");
 	}
 	
