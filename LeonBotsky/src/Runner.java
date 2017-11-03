@@ -13,6 +13,8 @@ public class Runner
 		
 		IsCommunist checker = new IsCommunist();
 		
+	while(!statement.equals("Bye"))
+	{	
 		System.out.println ("Hi! I'm Leon Botsky. Do you like communism by any chance?");
 		Scanner in = new Scanner (System.in);
 		String statement = in.nextLine();
@@ -55,7 +57,9 @@ public class Runner
 			}
 		}
 
+	
 		
+	}
 		System.out.println("Goodbye my brother");
 	}
 	
