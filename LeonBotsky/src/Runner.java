@@ -12,12 +12,13 @@ public class Runner
 		DiPietroChatBot chatbot3 = new DiPietroChatBot();
 		
 		IsCommunist checker = new IsCommunist();
+		String statement = "";
 		
 	while(!statement.equals("Bye"))
 	{	
 		System.out.println ("Hi! I'm Leon Botsky. Do you like communism by any chance?");
 		Scanner in = new Scanner (System.in);
-		String statement = in.nextLine();
+		statement = in.nextLine();
 		
 		//Uses the person's opinion on communism to refer them to the respective bot
 		
@@ -57,10 +58,8 @@ public class Runner
 			}
 		}
 
-	
-		
 	}
-		System.out.println("Goodbye my brother");
+		System.out.println("Goodbye, my brother.");
 	}
 	
 }
