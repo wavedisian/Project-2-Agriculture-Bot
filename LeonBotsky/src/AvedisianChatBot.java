@@ -9,7 +9,7 @@ public class AvedisianChatBot {
 		 */	
 		public String getGreeting()
 		{
-			return "Hi, how are you my comrade?";
+			return "So, you hate communism, huh?";
 		}
 		
 		/**

@@ -9,7 +9,7 @@ public class DiPietroChatBot {
 		 */	
 		public String getGreeting()
 		{
-			return "Hi, what is up?";
+			return "Yes, a fellow comrade! Isn't communism great?";
 		}
 		
 		/**
@@ -26,18 +26,24 @@ public class DiPietroChatBot {
 			
 			if (statement.length() == 0)
 			{
-				response = "Say something, please.";
+				response = "Quit Stalin and type something!";
 			}
 
 			else if (findKeyword(statement, "no") >= 0)
 			{
-				response = "Why so negative?";
+				response = "Cheer up. There's always hope for a revolution!";
+	                	emotion--;
+			}
+			
+			else if (findKeyword(statement, "revolution") >= 0)
+			{
+				response = "DOWN WITH THE BOURGEOISIE";
 	                	emotion--;
 			}
 			
 			else if (findKeyword(statement, "levin") >= 0)
 			{
-				response = "More like LevinTheDream amiright?";
+				response = "More like pleasegiveus100 amiright?";
 				emotion++;
 			}
 
@@ -100,7 +106,7 @@ public class DiPietroChatBot {
 			}
 			int psn = findKeyword (statement, "I want", 0);
 			String restOfStatement = statement.substring(psn + 6).trim();
-			return "Would you really be happy if you had " + restOfStatement + "?";
+			return restOfStatement + " sounds nice, but I want a revolution.";
 		}
 		
 		
