@@ -46,7 +46,7 @@ public class BansalChatBot
 					statement = in.nextLine();
 				}
 		}	
-		return ;
+		return statement;
 	}
 	private int findKeyword(String statement, String goal,int startPos)
 			{
