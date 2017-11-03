@@ -19,7 +19,7 @@ public class DiPietroChatBot {
 		 *            the user statement
 		 * @return a response based on the rules given
 		 */
-		
+				
 		public String getResponse(String statement)
 		{
 			String response = "";
@@ -32,6 +32,12 @@ public class DiPietroChatBot {
 			else if (findKeyword(statement, "no") >= 0)
 			{
 				response = "Cheer up. There's always hope for a revolution!";
+	                	emotion--;
+			}
+			
+			else if (findKeyword(statement, "capitalism") >= 0)
+			{
+				response = "Capitalism? More like crapitalism.";
 	                	emotion--;
 			}
 			
@@ -235,7 +241,8 @@ public class DiPietroChatBot {
 			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 		}
 		
-		private String [] randomNeutralResponses = {"Interesting, tell me more",
+		private String [] randomNeutralResponses = {
+				"cool",
 				"Hmmm.",
 				"Do you really think so?",
 				"You don't say.",
@@ -243,6 +250,12 @@ public class DiPietroChatBot {
 				"So, would you like to go for a walk?",
 				"Could you say that again?"
 		};
-		private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-		private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+		private String [] randomAngryResponses = {
+				"Bahumbug.", "Harumph", "The rage consumes me!"
+				};
+		private String [] randomHappyResponses = {
+				"Radical!", 
+				"Sharing is caring, you know.", 
+				"Я люблю коммунизм!"
+				};
 }
