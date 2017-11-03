@@ -1,9 +1,12 @@
 //Saurabh Bansal
+import java.util.Random;
+
 public class CommunismTalk 
 {
-	public int Talk(String statement)
+	int emotion = 0;
+	public String talk(String statement)
 	{
-		int emotion = 0;
+		String response = "";
 		// if and else statments to talk bout communism
 		{
 			if ((findKeyword(statement, "sucks") >= 0) || (findKeyword(statement, "it's bad")) >= 0 
@@ -35,7 +38,7 @@ public class CommunismTalk
 				{
 					response = getRandomResponse();
 				}
-			return (response);
+			return response;
 		}
 	}
 //Take an I want statement and the bot would try understanding why one likes __. Emotion can alter it's response.

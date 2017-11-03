@@ -1,7 +1,11 @@
 //Saurabh Bansal
 import java.util.Random;
+import java.util.Scanner;
 public class BansalChatBot 
 {
+	Scanner in = new Scanner (System.in);
+	Information info = new Information();
+	CommunismTalk talk = new CommunismTalk();
 	//Emotion can alter the way our bot responds. Depends on your response to Communism.
 	int emotion = 0;
 	// Get a default greeting
@@ -10,9 +14,9 @@ public class BansalChatBot
 	return "So I hear you're neutral about Communism. "
 			+ "Would you like Information about Mother Russia or would you like to talk about Communism?";
 	}
+	String response = "";
 	public String getResponse(String statement)
 	{
-		String response = "";
 		if (statement.length() == 0)
 		{
 			response =  ("I will not repeat myself!");
@@ -20,28 +24,29 @@ public class BansalChatBot
 		}
 		
 		// Information codes
-		else if ((findKeyword(statement, "information")) >= 0 && ((findKeyword(statement, "about communism")) >= 0))
+		else if ((findKeyword(statement, "information")) >= 0 && ((findKeyword(statement, "russia")) >= 0))
 		{
 			System.out.println ("What would you like to know?");
 			statement = in.nextLine();
 			
 			while (!statement.equals("Bye"))
 				{
-					System.out.println (Information.Info(statement));
+					System.out.println (info.info(statement));
 					statement = in.nextLine();
 				}
 		}
-		else if ((findKeyword(statement, "talk")) >= 0 && ((findKeyword(statement, "about communism")) >= 0))
+		else if ((findKeyword(statement, "talk")) >= 0 && ((findKeyword(statement, "communism")) >= 0))
 		{
-			System.out.println ("What would you like to know?");
+			System.out.println ("What would you like to talk about?");
 			statement = in.nextLine();
 			
 			while (!statement.equals("Bye"))
 				{
-					System.out.println (CommunismTalk.Talk(statement));
+					System.out.println (talk.talk(statement));
 					statement = in.nextLine();
 				}
 		}	
+		return ;
 	}
 	private int findKeyword(String statement, String goal,int startPos)
 			{

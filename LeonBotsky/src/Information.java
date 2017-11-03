@@ -1,9 +1,10 @@
 // Saurabh Bansal
 public class Information 
 {
-	public int Info(String statement)
+	public String info(String statement)
 	{
 		int emotion = 0;
+		String response = "";
 		//Used to find all the key questions based on communism
 		if ((findKeyword(statement, "karl marx")) >= 0)
 			{
@@ -52,11 +53,12 @@ public class Information
 			response = "China, Cuba, Laos, North Korea, Vietnam. "
 					+ "Nepal, Guyana, and Moldova have all had ruling communist parties in recent years. "
 					+ "While the world has just five communist countries, "
-					+ "socialist countries are relatively common—countries whose constitutions include statements about "
+					+ "socialist countries are relatively commonï¿½countries whose constitutions include statements about "
 					+ "the protection and rule of the working class. Socialist states include Portugal, Sri Lanka, India, "
 					+ "Guinea-Bissau, and Tanzania.";
 			emotion = 1;
 		}
+		return response;
 	}
 	private int findKeyword(String statement, String goal,int startPos)
 		{
