@@ -39,6 +39,9 @@ public class IsCommunist {
 		else if (findKeyword(statement, "do") >= 0) {
 			comOpinion = 1;
 		}
+		else if (findKeyword(statement, "sure") >= 0) {
+			comOpinion = 1;
+		}
 		else if (findKeyword(statement, "love") >= 0) {
 			comOpinion = 1;
 		}

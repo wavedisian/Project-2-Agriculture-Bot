@@ -6,7 +6,7 @@ public class BansalChatBot
 	Scanner in = new Scanner (System.in);
 	Information info = new Information();
 	CommunismTalk talk = new CommunismTalk();
-	//Emotion can alter the way our bot responds. Depends on your response to Communism.
+	//Emotion can alter the way our bot responds. Depends on your response to communism.
 	int emotion = 0;
 	// Get a default greeting
 	public String getGreeting()
@@ -35,7 +35,7 @@ public class BansalChatBot
 					statement = in.nextLine();
 				}
 		}
-		else if ((findKeyword(statement, "talk")) >= 0 || ((findKeyword(statement, "communism")) >= 0))
+		else
 		{
 			System.out.println ("What do you think about communism??");
 			statement = in.nextLine();

@@ -1,17 +1,20 @@
 // Saurabh Bansal
+import java.util.Random;
 public class Information 
 {
+	int emotion = 0;
+	String response = "";
 	public String info(String statement)
 	{
-		int emotion = 0;
-		String response = "";
 		//Used to find all the key questions based on communism
-		if ((findKeyword(statement, "karl marx")) >= 0)
+		if (((findKeyword(statement, "karl marx")) >= 0) || 
+				((findKeyword(statement, "marx")) >= 0))
 			{
 				response = "Go to http://www.history.com/topics/karl-marx and you can read all about him!";
 				emotion = 1;
 			}
-		else if ((findKeyword(statement, "soviet union")) >= 0)
+		else if (((findKeyword(statement, "soviet union")) >= 0) || 
+				((findKeyword(statement, "ussr")) >= 0))
 			{
 				response = 	"Go to http://www.history.com/topics/history-of-the-soviet-union "
 						+ "and you can read all about it!";
@@ -53,10 +56,14 @@ public class Information
 			response = "China, Cuba, Laos, North Korea, Vietnam. "
 					+ "Nepal, Guyana, and Moldova have all had ruling communist parties in recent years. "
 					+ "While the world has just five communist countries, "
-					+ "socialist countries are relatively common�countries whose constitutions include statements about "
+					+ "socialist countries are relatively common countries whose constitutions include statements about "
 					+ "the protection and rule of the working class. Socialist states include Portugal, Sri Lanka, India, "
 					+ "Guinea-Bissau, and Tanzania.";
 			emotion = 1;
+		}
+		
+		else {
+			response = "Hmm... I don't have any specific information about that. Maybe try something else?";
 		}
 		return response;
 	}

@@ -13,28 +13,40 @@ public class Runner
 		
 		IsCommunist checker = new IsCommunist();
 		String statement = "";
-		
-	while(!statement.equals("Bye"))
-	{	
-		System.out.println ("Hi! I'm Leon Botsky. Do you like communism by any chance?");
 		Scanner in = new Scanner (System.in);
+		int notBye = 0;
+		
+		System.out.println ("Hi! I'm Leon Botsky. Do you like communism by any chance?");
 		statement = in.nextLine();
 		
+	while(!statement.equals("end program")) {
+		if (notBye == 1) {
+			statement = "not bye";
+			System.out.println("Choose a new bot by typing its corresponding number.");
+			System.out.println("1 - For those who are neutral");
+			System.out.println("2 - For those who hate communism");
+			System.out.println("3 - For those who love communism");
+			System.out.println("Or, type 'end program' to leave.");
+			statement = in.nextLine();
+		}
+	while((!statement.equals("Bye")) && (!statement.equals("bye")) && (!statement.equals("end program")))
+	{	
+		String botChoice = statement;
 		//Uses the person's opinion on communism to refer them to the respective bot
 		
-		if (checker.isCommunist(statement) == -1) {
+		if ((checker.isCommunist(statement) == -1) || (botChoice.equals("2"))) {
 			
 			System.out.println (chatbot2.getGreeting());
 			statement = in.nextLine();
 			
-			while (!statement.equals("Bye"))
+			while ((!statement.equals("Bye")) && (!statement.equals("bye")) && (!statement.equals("end program")))
 			{
 				System.out.println (chatbot2.getResponse(statement));
 				statement = in.nextLine();
 			}
 		}
 		
-		else if (checker.isCommunist(statement) == 1) {
+		else if ((checker.isCommunist(statement) == 1) || (botChoice.equals("3"))) {
 			
 			System.out.println (chatbot3.getGreeting());
 			statement = in.nextLine();
@@ -48,7 +60,7 @@ public class Runner
 				statement = in.nextLine();
 			}
 			
-			while (!statement.equals("Bye"))
+			while ((!statement.equals("Bye")) && (!statement.equals("bye")) && (!statement.equals("end program")))
 			{
 				System.out.println (chatbot3.getResponse(statement));
 				statement = in.nextLine();
@@ -60,7 +72,7 @@ public class Runner
 			System.out.println (chatbot1.getGreeting());
 			statement = in.nextLine();
 			
-			while (!statement.equals("Bye"))
+			while ((!statement.equals("Bye")) && (!statement.equals("bye")) && (!statement.equals("end program")))
 			{
 				System.out.println (chatbot1.getResponse(statement));
 				statement = in.nextLine();
@@ -69,6 +81,7 @@ public class Runner
 
 	}
 		System.out.println("Goodbye, my brother.");
+		notBye = 1;
 	}
-	
+	}
 }

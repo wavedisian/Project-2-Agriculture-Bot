@@ -79,8 +79,9 @@ public class DiPietroChatBot {
 			}
 			else if (score >= 80) {
 				System.out.println("You scored " + score + "%. A true коммунист!");
+				emotion++;
 			}
-			System.out.println("Shall we go back to chatting?");
+			System.out.println("Let's go back to chatting.");
 		}
 		
 		/**
@@ -99,6 +100,12 @@ public class DiPietroChatBot {
 			{
 				response = "Quit Stalin and type something!";
 			}
+			else if (((findKeyword(statement, "hate") >= 0) || (findKeyword(statement, "dislike") >= 0) || (findKeyword(statement, "don't like") >= 0))
+			&& (findKeyword(statement, "communism") >= 0))
+			{
+				response = "But... you said you liked communism.";
+	                	emotion--;
+			}
 
 			else if (findKeyword(statement, "no") >= 0)
 			{
@@ -106,7 +113,7 @@ public class DiPietroChatBot {
 	                	emotion--;
 			}
 			
-			else if (findKeyword(statement, "thank you") >= 0)
+			else if ((findKeyword(statement, "thank you") >= 0) || (findKeyword(statement, "thanks") >= 0))
 			{
 				response = "You're welcome!";
 	                	emotion++;
@@ -129,7 +136,7 @@ public class DiPietroChatBot {
 				response = "More like pleasegiveus100 amiright?";
 				emotion++;
 			}
-			if (findKeyword(statement, "you") >= 0)
+			else if (findKeyword(statement, "you") >= 0)
 			{
 				response = "ME???";
 			}

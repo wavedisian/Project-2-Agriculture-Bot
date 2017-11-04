@@ -124,7 +124,7 @@ public class CommunismTalk
 		"What does the USSR stand for?",
 		"It's all a fantasy.",
 		"Would you like some sickles and hammers??",
-		"Which country of the USSR was your favorite? Mine was Albania."
+		"Which country of the USSR was your favorite? Mine was Russia."
 	};
 	private String [] randomAngryResponses = 
 	{
