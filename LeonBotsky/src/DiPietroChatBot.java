@@ -129,6 +129,10 @@ public class DiPietroChatBot {
 				response = "More like pleasegiveus100 amiright?";
 				emotion++;
 			}
+			if (findKeyword(statement, "you") >= 0)
+			{
+				response = "ME???";
+			}
 
 			// Response transforming I want to statement
 			else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -201,30 +205,6 @@ public class DiPietroChatBot {
 		{
 			return (statement.substring(0, 1)).toUpperCase() + statement.substring(1);
 			
-		}
-		/**
-		 * Take a statement with "I <something> you" and transform it into 
-		 * "Why do you <something> me?"
-		 * @param statement the user statement, assumed to contain "I" followed by "you"
-		 * @return the transformed statement
-		 */
-		private String transformIYouStatement(String statement)
-		{
-			//  Remove the final period, if there is one
-			statement = statement.trim();
-			String lastChar = statement.substring(statement
-					.length() - 1);
-			if (lastChar.equals("."))
-			{
-				statement = statement.substring(0, statement
-						.length() - 1);
-			}
-			
-			int psnOfI = findKeyword (statement, "I", 0);
-			int psnOfYou = findKeyword (statement, "you", psnOfI);
-			
-			String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-			return "Why do you " + restOfStatement + " me?";
 		}
 		private String transformIHateStatement(String statement)
 		{
