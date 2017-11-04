@@ -37,7 +37,7 @@ public class BansalChatBot
 		}
 		else if ((findKeyword(statement, "talk")) >= 0 || ((findKeyword(statement, "communism")) >= 0))
 		{
-			System.out.println ("What would you like to talk about?");
+			System.out.println ("What do you think about communism??");
 			statement = in.nextLine();
 			
 			while (!statement.equals("Bye"))
