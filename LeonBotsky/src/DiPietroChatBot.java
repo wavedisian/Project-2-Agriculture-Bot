@@ -1,6 +1,9 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class DiPietroChatBot {
+	Scanner in = new Scanner (System.in);
+	String statement = "";
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 		int emotion = 0;
 		/**
@@ -9,7 +12,75 @@ public class DiPietroChatBot {
 		 */	
 		public String getGreeting()
 		{
-			return "Yes, a fellow comrade! Isn't communism great?";
+			return "Ah, a comrade! Would you like to test your knowledge on communism?";
+		}
+		public String getGreeting2()
+		{
+			return "That's a shame. I guess we can just chat. Tell me about yourself :)";
+		}
+		public void beginQuiz()
+		{
+			int score = 0;
+			//QUESTION 1
+			System.out.println("What country was the first to become officially communist?");
+			statement = in.nextLine();
+			if (statement.toLowerCase().equals("russia")) {
+				score = score + 20;
+				System.out.println("Correct! Next question.");
+			}
+			else {
+				System.out.println("Sorry, but the correct answer is Russia. Next question.");
+			}
+			//QUESTION 2
+			System.out.println("Whose book 'Das Kapital' paved the way for Communism?");
+			statement = in.nextLine();
+			if ((statement.toLowerCase().equals("karl marx")) || (statement.toLowerCase().equals("marx"))) {
+				score = score + 20;
+				System.out.println("Correct! Next question.");
+			}
+			else {
+				System.out.println("Sorry, but the correct answer is Karl Marx. Next question.");
+			}
+			//QUESTION 3
+			System.out.println("Who was the first leader of the Soviet Union?");
+			statement = in.nextLine();
+			if ((statement.toLowerCase().equals("vladimir lenin")) || (statement.toLowerCase().equals("lenin"))) {
+				score = score + 20;
+				System.out.println("Correct! Next question.");
+			}
+			else {
+				System.out.println("Sorry, but the correct answer is Vladimir Lenin. Next question.");
+			}
+			//QUESTION 4
+			System.out.println("In which year did the Soviet Union dissolve?");
+			statement = in.nextLine();
+			if (statement.toLowerCase().equals("1991")) {
+				score = score + 20;
+				System.out.println("Correct! Next question.");
+			}
+			else {
+				System.out.println("Sorry, but the correct answer is 1991. Next question.");
+			}
+			//QUESTION 5
+			System.out.println("What is the only currently communist country not in Asia?");
+			statement = in.nextLine();
+			if (statement.toLowerCase().equals("cuba")) {
+				score = score + 20;
+				System.out.println("Correct! Next question.");
+			}
+			else {
+				System.out.println("Sorry, but the correct answer is Cuba.");
+			}
+			if (score <= 40) {
+				System.out.println("You scored " + score + "%. You should learn more about communism!");
+			}
+			else if (score == 60) {
+				System.out.println("You scored " + score + "%. Nice.");
+			}
+			else if (score >= 80) {
+				System.out.println("You scored " + score + "%. A true коммунист!");
+			}
+			System.out.println("Shall we go back to chatting?");
 		}
 		
 		/**
@@ -35,6 +106,12 @@ public class DiPietroChatBot {
 	                	emotion--;
 			}
 			
+			else if (findKeyword(statement, "thank you") >= 0)
+			{
+				response = "You're welcome!";
+	                	emotion++;
+			}
+			
 			else if (findKeyword(statement, "capitalism") >= 0)
 			{
 				response = "Capitalism? More like crapitalism.";
@@ -44,7 +121,7 @@ public class DiPietroChatBot {
 			else if (findKeyword(statement, "revolution") >= 0)
 			{
 				response = "DOWN WITH THE BOURGEOISIE";
-	                	emotion--;
+	                	emotion++;
 			}
 			
 			else if (findKeyword(statement, "levin") >= 0)
@@ -61,7 +138,11 @@ public class DiPietroChatBot {
 			else if (findKeyword(statement, "I want",0) >= 0)
 			{
 				response = transformIWantStatement(statement);
-			}	
+			}
+			else if (findKeyword(statement, "I hate", 0) >= 0)
+			{
+				response = transformIHateStatement(statement);
+			}
 			else
 			{
 				response = getRandomResponse();
@@ -112,10 +193,15 @@ public class DiPietroChatBot {
 			}
 			int psn = findKeyword (statement, "I want", 0);
 			String restOfStatement = statement.substring(psn + 6).trim();
-			return restOfStatement + " sounds nice, but I want a revolution.";
+			return capitalizeLetter(restOfStatement) + " sounds nice, but I want a revolution.";
 		}
 		
-		
+		//capitalizes first letter of a substring
+		private String capitalizeLetter(String statement)
+		{
+			return (statement.substring(0, 1)).toUpperCase() + statement.substring(1);
+			
+		}
 		/**
 		 * Take a statement with "I <something> you" and transform it into 
 		 * "Why do you <something> me?"
@@ -139,6 +225,21 @@ public class DiPietroChatBot {
 			
 			String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 			return "Why do you " + restOfStatement + " me?";
+		}
+		private String transformIHateStatement(String statement)
+		{
+			//  Remove the final period, if there is one
+			statement = statement.trim();
+			String lastChar = statement.substring(statement
+					.length() - 1);
+			if (lastChar.equals("."))
+			{
+				statement = statement.substring(0, statement
+						.length() - 1);
+			}
+			int psn = findKeyword (statement, "I hate", 0);
+			String restOfStatement = statement.substring(psn + 6).trim();
+			return capitalizeLetter(restOfStatement) + " is better than capitalism!";
 		}
 		
 
@@ -244,11 +345,11 @@ public class DiPietroChatBot {
 		private String [] randomNeutralResponses = {
 				"I know, right?",
 				"Interesting.",
-				"I never thought about that.",
+				"If you put it that way...",
 				"I love talking to you.",
-				"Oh...",
 				"I'm shook.",
-				"You're so knowledgable."
+				"You're so knowledgable.",
+				"Tell me more about yourself."
 		};
 		private String [] randomAngryResponses = {
 				"What???", 

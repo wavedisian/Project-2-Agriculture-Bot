@@ -38,6 +38,15 @@ public class Runner
 			
 			System.out.println (chatbot3.getGreeting());
 			statement = in.nextLine();
+			// reuses method to see if user wants to take quiz
+			if (checker.isCommunist(statement) == 1) {
+				chatbot3.beginQuiz();
+				statement = in.nextLine();
+			}
+			else {
+				System.out.println (chatbot3.getGreeting2());
+				statement = in.nextLine();
+			}
 			
 			while (!statement.equals("Bye"))
 			{
