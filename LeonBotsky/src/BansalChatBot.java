@@ -24,7 +24,7 @@ public class BansalChatBot
 		}
 		
 		// Information codes
-		else if ((findKeyword(statement, "information")) >= 0 && ((findKeyword(statement, "russia")) >= 0))
+		else if ((findKeyword(statement, "information")) >= 0 || ((findKeyword(statement, "russia")) >= 0))
 		{
 			System.out.println ("What would you like to know?");
 			statement = in.nextLine();
@@ -35,9 +35,9 @@ public class BansalChatBot
 					statement = in.nextLine();
 				}
 		}
-		else if ((findKeyword(statement, "talk")) >= 0 && ((findKeyword(statement, "communism")) >= 0))
+		else if ((findKeyword(statement, "talk")) >= 0 || ((findKeyword(statement, "communism")) >= 0))
 		{
-			System.out.println ("What would you like to talk about?");
+			System.out.println ("What do you think about communism??");
 			statement = in.nextLine();
 			
 			while (!statement.equals("Bye"))
