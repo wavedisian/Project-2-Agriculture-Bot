@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class AvedisianChatBot {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
+		statement = statement.toLowerCase();
 		int emotion = 0;
 		/**
 		 * Get a default greeting 	
@@ -25,12 +26,15 @@ public class AvedisianChatBot {
 			
 			if (statement.length() == 0)
 			{
-				response = "You musn't be shy brother.";
+				response = "You musn't be shy if you're a dissenter, brother.";
 			}
-
+			else if (findKeyword(statement, "yes") >= 0)
+			{
+				response = "Tell me, which aspect about communism bothers you the most"
+			}
 			else if (findKeyword(statement, "no") >= 0)
 			{
-				response = "I don't know what I did to deserve that response.";
+				response = "Well then why would you be talking to me? ";
 	                	emotion--;
 			}
 			
@@ -46,11 +50,11 @@ public class AvedisianChatBot {
 			}
 
 			// Response transforming I want to statement
-			else if (findKeyword(statement, "I want to", 0) >= 0)
+			//else if (findKeyword(statement, "I want to", 0) >= 0)
 			{
 				response = transformIWantToStatement(statement);
 			}
-			else if (findKeyword(statement, "I want",0) >= 0)
+			//else if (findKeyword(statement, "I want",0) >= 0)
 			{
 				response = transformIWantStatement(statement);
 			}	
