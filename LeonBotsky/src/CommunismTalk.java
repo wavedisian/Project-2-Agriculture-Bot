@@ -9,8 +9,7 @@ public class CommunismTalk
 		String response = "";
 		// if and else statments to talk bout communism
 		{
-			if ((findKeyword(statement, "sucks") >= 0) || (findKeyword(statement, "it's bad")) >= 0 
-					|| (findKeyword(statement, "bad") >= 0))
+			if ((findKeyword(statement, "sucks") >= 0) || (findKeyword(statement, "bad")) >= 0)
 				{
 					emotion = 1;
 					response = "How come?";

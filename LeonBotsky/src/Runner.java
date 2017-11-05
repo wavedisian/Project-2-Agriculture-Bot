@@ -13,6 +13,7 @@ public class Runner
 		
 		IsCommunist checker = new IsCommunist();
 		String statement = "";
+		String wes = "gay";
 		Scanner in = new Scanner (System.in);
 		int notBye = 0;
 		
@@ -29,7 +30,7 @@ public class Runner
 			System.out.println("Or, type 'end program' to leave.");
 			statement = in.nextLine();
 		}
-	while((!statement.equals("Bye")) && (!statement.equals("bye")) && (!statement.equals("end program")))
+		while ((!statement.toLowerCase().equals("bye")) && (!statement.equals("end program")))
 	{	
 		String botChoice = statement;
 		//Uses the person's opinion on communism to refer them to the respective bot
@@ -39,7 +40,7 @@ public class Runner
 			System.out.println (chatbot2.getGreeting());
 			statement = in.nextLine();
 			
-			while ((!statement.equals("Bye")) && (!statement.equals("bye")) && (!statement.equals("end program")))
+			while ((!statement.toLowerCase().equals("bye")) && (!statement.equals("end program")))
 			{
 				System.out.println (chatbot2.getResponse(statement));
 				statement = in.nextLine();
@@ -60,7 +61,7 @@ public class Runner
 				statement = in.nextLine();
 			}
 			
-			while ((!statement.equals("Bye")) && (!statement.equals("bye")) && (!statement.equals("end program")))
+			while ((!statement.toLowerCase().equals("bye")) && (!statement.equals("end program")))
 			{
 				System.out.println (chatbot3.getResponse(statement));
 				statement = in.nextLine();
@@ -72,7 +73,7 @@ public class Runner
 			System.out.println (chatbot1.getGreeting());
 			statement = in.nextLine();
 			
-			while ((!statement.equals("Bye")) && (!statement.equals("bye")) && (!statement.equals("end program")))
+			while ((!statement.toLowerCase().equals("bye")) && (!statement.equals("end program")))
 			{
 				System.out.println (chatbot1.getResponse(statement));
 				statement = in.nextLine();

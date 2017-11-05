@@ -29,7 +29,7 @@ public class BansalChatBot
 			System.out.println ("What would you like to know?");
 			statement = in.nextLine();
 			
-			while (!statement.equals("Bye"))
+			while ((!statement.toLowerCase().equals("bye")) && (!statement.equals("end program")))
 				{
 					System.out.println (info.info(statement));
 					statement = in.nextLine();
@@ -40,13 +40,13 @@ public class BansalChatBot
 			System.out.println ("What do you think about communism??");
 			statement = in.nextLine();
 			
-			while (!statement.equals("Bye"))
+			while ((!statement.toLowerCase().equals("bye")) && (!statement.equals("end program")))
 				{
 					System.out.println (talk.talk(statement));
 					statement = in.nextLine();
 				}
 		}	
-		return statement;
+		return response;
 	}
 	private int findKeyword(String statement, String goal,int startPos)
 			{
