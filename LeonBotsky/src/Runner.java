@@ -13,7 +13,6 @@ public class Runner
 		
 		IsCommunist checker = new IsCommunist();
 		String statement = "";
-		String wes = "gay";
 		Scanner in = new Scanner (System.in);
 		int notBye = 0;
 		
@@ -22,6 +21,8 @@ public class Runner
 		
 	while(!statement.equals("end program")) {
 		if (notBye == 1) {
+			
+			//Process for choosing a new bot after initial bot is told "bye"
 			statement = "not bye";
 			System.out.println("Choose a new bot by typing its corresponding number.");
 			System.out.println("1 - For those who are neutral");
@@ -33,8 +34,8 @@ public class Runner
 		while ((!statement.toLowerCase().equals("bye")) && (!statement.equals("end program")))
 	{	
 		String botChoice = statement;
-		//Uses the person's opinion on communism to refer them to the respective bot
 		
+		//Uses the person's opinion on communism to refer them to the respective bot
 		if ((checker.isCommunist(statement) == -1) || (botChoice.equals("2"))) {
 			
 			System.out.println (chatbot2.getGreeting());

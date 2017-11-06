@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class DiPietroChatBot {
 	Scanner in = new Scanner (System.in);
 	String statement = "";
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
+	
+	//Emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 		int emotion = 0;
 		/**
 		 * Get a default greeting 	
@@ -20,6 +21,8 @@ public class DiPietroChatBot {
 		{
 			return "That's a shame. I guess we can just chat. Tell me about yourself :)";
 		}
+		
+		//Begins quiz on communism.
 		public void beginQuiz()
 		{
 			int score = 0;
@@ -209,12 +212,20 @@ public class DiPietroChatBot {
 			return capitalizeLetter(restOfStatement) + " sounds nice, but I want a revolution.";
 		}
 		
-		//capitalizes first letter of a substring
+		//Capitalizes first letter of a substring
 		private String capitalizeLetter(String statement)
 		{
 			return (statement.substring(0, 1)).toUpperCase() + statement.substring(1);
 			
 		}
+		
+		/**
+		 * Take a statement with "I hate <something>." and transform it into 
+		 * "<something> is better than capitalism!"
+		 * @param statement the user statement, assumed to contain "I hate"
+		 * @return the transformed statement
+		 */
+		
 		private String transformIHateStatement(String statement)
 		{
 			//  Remove the final period, if there is one
