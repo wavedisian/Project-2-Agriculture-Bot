@@ -2,7 +2,8 @@ import java.util.Random;
 
 public class AvedisianChatBot {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-		statement = statement.toLowerCase();
+		statement = statement.toLowerCase(); // kill any bugs caused by case sensitivity
+		int c = 0; //im using an integer to define a path for the conversation to follow based on user input.
 		int emotion = 0;
 		/**
 		 * Get a default greeting 	
@@ -23,47 +24,51 @@ public class AvedisianChatBot {
 		public String getResponse(String statement)
 		{
 			String response = "";
-			
-			if (statement.length() == 0)
+			if(c==0)
+			{	
+				if (statement.length() == 0)
+				{
+					response = "You musn't be shy if you're a dissenter, brother.";
+				}
+				else if (findKeyword(statement, "yes") >= 0)
+				{
+					response = "Tell me, which aspect about communism bothers you the most";   //move to convo 1
+					c==1;
+				}
+				else if (findKeyword(statement, "no") >= 0)
+				{
+					response = "Well then why would you be talking to me? ";
+					emotion--;
+				}
+				else if (findKeyword(statement, "Stalin") >= 0)
+				{
+					response = "Stalin? He is my hero.";
+					emotion++;
+				}
+				else if (findKeyword(statement, "Marx") >= 0)
+				{
+					response = "Marx the magnificent, am I right?.";
+					emotion++;
+				}
+				// Response transforming I want to statement
+				//else if (findKeyword(statement, "I want to", 0) >= 0)
+				{
+					response = transformIWantToStatement(statement);
+				}
+					//else if (findKeyword(statement, "I want",0) >= 0)
+				{
+					response = transformIWantStatement(statement);
+				}	
+				else
+				{
+					response = getRandomResponse();
+				}
+				return response;
+				}
+			if(c==1) //convo discussing why user dislikes communism  
 			{
-				response = "You musn't be shy if you're a dissenter, brother.";
+				if(findKeyword(statement, "") >= 0)
 			}
-			else if (findKeyword(statement, "yes") >= 0)
-			{
-				response = "Tell me, which aspect about communism bothers you the most"
-			}
-			else if (findKeyword(statement, "no") >= 0)
-			{
-				response = "Well then why would you be talking to me? ";
-	                	emotion--;
-			}
-			
-			else if (findKeyword(statement, "Stalin") >= 0)
-			{
-				response = "Stalin? He is my hero.";
-				emotion++;
-			}
-			else if (findKeyword(statement, "Marx") >= 0)
-			{
-				response = "Marx the magnificent, am I right?.";
-				emotion++;
-			}
-
-			// Response transforming I want to statement
-			//else if (findKeyword(statement, "I want to", 0) >= 0)
-			{
-				response = transformIWantToStatement(statement);
-			}
-			//else if (findKeyword(statement, "I want",0) >= 0)
-			{
-				response = transformIWantStatement(statement);
-			}	
-			else
-			{
-				response = getRandomResponse();
-			}
-			
-			return response;
 		}
 		
 		/**
