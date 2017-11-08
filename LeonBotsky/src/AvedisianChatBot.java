@@ -3,7 +3,7 @@ import java.util.Random;
 public class AvedisianChatBot {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 		int emotion = 0;
-		int c = 0 //this number is used for calling a different group of responses, such as if the type of conversation changes.
+		int c = 0; //this number is used for calling a different group of responses, such as if the type of conversation changes.
 		/**
 		 * Get a default greeting 	
 		 * @return a greeting
@@ -64,7 +64,7 @@ public class AvedisianChatBot {
 			{
 				response = "I haven't all day.";
 			}
-			if ((findKeyword(statement, "no") >= 0)||(findKeyword(statement, "yes") >= 0))
+			if ((findKeyword(statement, "no") >= 0))
 			{
 				response = "Stop wasting my time";
 	                	emotion=-2;
@@ -72,13 +72,14 @@ public class AvedisianChatBot {
 			if (findKeyword(statement, "politics") >= 0)
 			{
 				response = "Well then let's discuss politics! Are you familiar with the subject?";
-	            c = 2;
+	            c = 3;
 			}
 			if (findKeyword(statement, "economics") >= 0)
 			{
 				response = "Well then let's discuss economics! Are you familiar with the subject?";
-	            c = 3;
+	            c = 2;
 			}
+			return response;
 		}
 		if(c==2)
 		{
@@ -88,9 +89,15 @@ public class AvedisianChatBot {
 			}
 			if (findKeyword(statement, "no") >= 0)
 			{
-				response = "Then I would recommend you visit my friend Neutral Bot, he can loan you some information so that you can know all the facts";
+				response = "Then I would recommend you visit my friend Neutral Bot, he can loan you some information so that you can know all the facts.";
 			}
+			if (findKeyword(statement, "yes") >= 0)
+			{
+				response = "Well then you should know that redistributing wealth is by far and away the superior method.";
+			}
+			return response;
 		}
+		return response;
 		}
 		
 		
@@ -98,14 +105,14 @@ public class AvedisianChatBot {
 		
 		
 		
-		public static boolean isBad(String statement)
-		{
-			statement = statement.toLowerCase();
-			if((findKeyword(statement, "i dislike") >= 0)||(findKeyword(statement, "is bad") >= 0)||(findKeyword(statement, "hate") >= 0)||
-			   (findKeyword(statement, "communism sucks") >= 0)||(findKeyword(statement, "economics") >= 0)
-					
-					)
-		}
+		//public static boolean isBad(String statement)
+		//{
+		//	statement = statement.toLowerCase();
+		//	if((findKeyword(statement, "i dislike") >= 0)||(findKeyword(statement, "is bad") >= 0)||(findKeyword(statement, "hate") >= 0)||
+		//	   (findKeyword(statement, "communism sucks") >= 0)||(findKeyword(statement, "economics") >= 0)
+		//			
+		//			);
+		//}
 		
 		
 		
@@ -262,7 +269,7 @@ public class AvedisianChatBot {
 		 * @param goal the string to search for
 		 * @return the index of the first occurrence of goal in statement or -1 if it's not found
 		 */
-		public static int findKeyword(String statement, String goal)
+		private int findKeyword(String statement, String goal)
 		{
 			return findKeyword (statement, goal, 0);
 		}
